@@ -21,7 +21,6 @@ if (!isStatsTracked) {
     localStorage.setItem('triesStats', JSON.stringify(Array(NUMBER_GUESS).fill(0)));
 }
 
-const restartBtn = document.getElementById("restart-btn");
 
 const container = document.getElementById("container");
 const canvas = document.getElementById("canvas");
@@ -63,8 +62,9 @@ restartBtn.addEventListener("click", () => {
     }
 
     restartBtn.blur();
-    restartBtn.hidden = true;
-    clearCanvas();
+    restartBtn.style.display = 'none';
+    result.style.display = 'none';
+clearCanvas();
 });
 
 deleteBtn.addEventListener("click", () => {
@@ -145,9 +145,9 @@ function checkGuess() {
 
         setTimeout(() => {
             if (guessesLeft <= 3) {
-                restartBtn.hidden = false;
+                restartBtn.style.display = 'block';
             } else {
-                restartBtn.hidden = true;
+                restartBtn.style.display = 'none';
             }
         }, 210 * 5);
     }
@@ -162,6 +162,7 @@ function checkGuess() {
         setTimeout(() => {
             animate();
             canvas.style.display = 'block';
+            result.style.display = 'block';
         }, 1000);
     } else {
         guessesLeft--;

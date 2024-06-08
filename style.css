@@ -88,8 +88,11 @@ h2 {
     flex-direction: column;
     align-items: center;   
 }
-#restart-btn {
+#restartBtn {
     font-size: 50px;
+}
+#resetStatsBtn {
+    font-size: 20px;
 }
 
 #game-container {
