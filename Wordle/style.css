@@ -1,0 +1,126 @@
+* {
+    font-family: "K2D", sans-serif;
+    overflow-x: hidden;
+}
+h1 {
+    text-align: center;
+    font-family: "Madimi One", sans-serif;
+    font-size: 3rem;
+}
+
+h2 {
+    text-align: center;
+    font-size: 1.75rem;
+    margin-right: 5px;
+}
+/* Board */
+#container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.letterRow {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 0.5vw;
+    margin-bottom: 0.7vh;
+    overflow: hidden;
+
+}
+
+.letterBox {
+    border: 2px solid #000000;
+    height: 4.5rem;
+    width: 4.5rem;
+    border-radius: 5px;
+    font-size: 4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+}
+
+.filledBox {
+    font-size: 800;
+}
+
+/* Keyboard */
+#keyboard-en,
+#keyboard-fr {
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#keyboard-en,
+#keyboard-fr {
+    display: flex;
+}
+
+.keyboard-button {
+    font-size: 1.8rem;
+    padding: 1rem;
+    text-transform: uppercase;
+}
+
+.second-row {
+    margin-block: 8px;
+}
+
+#keyboard-fr {
+    display: none;
+}
+
+.madimi-one-regular {
+    font-weight: 400;
+    font-style: normal;
+}
+
+#restart{
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+}
+#restart-btn {
+    font-size: 50px;
+}
+
+#game-container {
+    position: relative;
+    width: 100%;
+    height: 98vh;
+    z-index: 1;
+    overflow: hidden;
+
+}
+
+#result {
+    width: 200px;
+    margin-top: 75px;
+    position: absolute;
+    left: 50%;
+    margin-left: -160px;
+    padding: 60px;
+    background: rgba(201, 201, 201, 0.795);
+    border-radius: 15px;
+}    
+
+#result ul {
+    padding-left: 10px;
+    font-size: 1.25rem;
+
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
