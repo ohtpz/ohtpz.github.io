@@ -3,120 +3,42 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-        rel="stylesheet">
-    <title>Wordle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Random Hello World PWA - A Multi-Language Progressive Web App</title>
+    <meta name="description" content="Says &quot;Hello World!&quot; in a random human language, on a random background color. It's a PWA, so you can try it in your browser, and add it to your home screen.">
+
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="apple-touch-icon" href="/images/manifest/icons/random-hello-world-pwa-icon-180.png">
+    <meta name="theme-color" content="#000000" />
+
+    <link rel="stylesheet" href="/styles/normalize.css">
+    <link rel="stylesheet" href="/styles/main.css">
 </head>
 
 <body>
-    <header>
-        <h1>Wordle</h1>
+    <header class="toolbar" id="toolbar">
+        <h1 id="title" class="toolbar__title">Hello World</h1>
+        <div class="toolbar__actions">
+            <i id="shuffle" class="toolbar__action icon--refresh" title="Reload message"></i>
+            <a href="https://www.tecdrop.com" target="_blank" rel="noopener">
+                <i class="toolbar__action icon--info" title="App info"></i>
+            </a>
+        </div>
     </header>
+    <main id="main">
+        <p class="message" id="message">Hello World!</p>
+    </main>
 
-    <div id="game-container">
-        <div id="result" hidden>
-            <h2>Results</h2>            
-            <ul>
-                <li>1: <span id="try1"></span></li>
-                <li>2: <span id="try2"></span></li>
-                <li>3: <span id="try3"></span></li>
-                <li>4: <span id="try4"></span></li>
-                <li>5: <span id="try5"></span></li>
-                <li>6: <span id="try6"></span></li>
-            </ul>
-            <h3>Games Played : <span id="gamesPlayed"></span></h3>
-            <h3>Win Rate : <span id="winRate"></span></h3>
-            <h3>Wins : <span id="wins"></span></h3>
-            <button id="resetStatsBtn">Reset Stats</button>
-        </div>
-        <div id="container">
-        </div>
-        
-        <div id="keyboard-en">
-            <div class="first-row">
-                <button class="keyboard-button">q</button>
-                <button class="keyboard-button">w</button>
-                <button class="keyboard-button">e</button>
-                <button class="keyboard-button">r</button>
-                <button class="keyboard-button">t</button>
-                <button class="keyboard-button">y</button>
-                <button class="keyboard-button">u</button>
-                <button class="keyboard-button">i</button>
-                <button class="keyboard-button">o</button>
-                <button class="keyboard-button">p</button>
-            </div>
-            <div class="second-row">
-                <button class="keyboard-button">a</button>
-                <button class="keyboard-button">s</button>
-                <button class="keyboard-button">d</button>
-                <button class="keyboard-button">f</button>
-                <button class="keyboard-button">g</button>
-                <button class="keyboard-button">h</button>
-                <button class="keyboard-button">j</button>
-                <button class="keyboard-button">k</button>
-                <button class="keyboard-button">l</button>
-            </div>
-            <div class="third-row">
-                <button class="keyboard-button" id="deleteBtn">Del</button>
-                <button class="keyboard-button">z</button>
-                <button class="keyboard-button">x</button>
-                <button class="keyboard-button">c</button>
-                <button class="keyboard-button">v</button>
-                <button class="keyboard-button">b</button>
-                <button class="keyboard-button">n</button>
-                <button class="keyboard-button">m</button>
-                <button class="keyboard-button" id="enterBtn">Enter</button>
-            </div>
-        </div>
-        <!-- <div id="keyboard-fr" hidden>
-            <div class="first-row">
-                <button class="keyboard-button">q</button>
-                <button class="keyboard-button">w</button>
-                <button class="keyboard-button">e</button>
-                <button class="keyboard-button">r</button>
-                <button class="keyboard-button">t</button>
-                <button class="keyboard-button">z</button>
-                <button class="keyboard-button">u</button>
-                <button class="keyboard-button">i</button>
-                <button class="keyboard-button">o</button>
-                <button class="keyboard-button">p</button>
-            </div>
-            <div class="second-row">
-                <button class="keyboard-button">a</button>
-                <button class="keyboard-button">s</button>
-                <button class="keyboard-button">d</button>
-                <button class="keyboard-button">f</button>
-                <button class="keyboard-button">g</button>
-                <button class="keyboard-button">h</button>
-                <button class="keyboard-button">j</button>
-                <button class="keyboard-button">k</button>
-                <button class="keyboard-button">l</button>
-            </div>
-            <div class="third-row">
-                <button class="keyboard-button" onclick="deleteLetter()">Del</button>
-                <button class="keyboard-button">y</button>
-                <button class="keyboard-button">x</button>
-                <button class="keyboard-button">c</button>
-                <button class="keyboard-button">v</button>
-                <button class="keyboard-button">b</button>
-                <button class="keyboard-button">n</button>
-                <button class="keyboard-button">m</button>
-                <button class="keyboard-button" onclick="checkGuess()">Enter</button>
-            </div>
-        </div> -->
-        <div id="restart">
-        <button id="restartBtn" hidden>Restart?</button>
-        </div>
-    </div>
+    <script type="module" src="/scripts/main.js"></script>
+
+    <script>
+        // Register service worker
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("/sw.js");
+            });
+        }
+    </script>
 </body>
-<script src="js/script.js" type="module"></script>
 
 </html>
